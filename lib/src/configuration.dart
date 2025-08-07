@@ -126,6 +126,13 @@ class Configuration {
       signToolOptions = commandLineConverter.convert(signToolOptionsConfig);
     }
 
+    final String? exePath =
+        (_args['executable-file-path'] ?? yaml['executable_file_path'])?.toString();
+    if (exePath != null && exePath.isNotEmpty) {
+      CommandLineConverter commandLineConverter = CommandLineConverter();
+      executableFileName = commandLineConverter.convert(signToolOptionsConfig);
+    }
+
     final String? windowsBuildArgsConfig =
         (_args['windows-build-args'] ?? yaml['windows_build_args'])?.toString();
     if (windowsBuildArgsConfig != null && windowsBuildArgsConfig.isNotEmpty) {
@@ -365,9 +372,7 @@ class Configuration {
       throw 'Build files not found at $buildFilesFolder, first run "flutter build windows" then try again';
     }
 
-    dynamic installerYaml = yaml['app_installer'] ?? YamlMap();
-
-    executableFileName = installerYaml['executable_file'] ?? await Directory(buildFilesFolder)
+    executableFileName = exexutableFileName ?? await Directory(buildFilesFolder)
         .list()
         .firstWhere((file) =>
             file.path.endsWith('.exe') &&
