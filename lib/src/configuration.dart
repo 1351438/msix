@@ -372,7 +372,7 @@ class Configuration {
       throw 'Build files not found at $buildFilesFolder, first run "flutter build windows" then try again';
     }
 
-    executableFileName = exexutableFileName ?? await Directory(buildFilesFolder)
+    executableFileName = executableFileName ?? await Directory(buildFilesFolder)
         .list()
         .firstWhere((file) =>
             file.path.endsWith('.exe') &&
