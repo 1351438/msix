@@ -365,6 +365,8 @@ class Configuration {
       throw 'Build files not found at $buildFilesFolder, first run "flutter build windows" then try again';
     }
 
+    dynamic installerYaml = yaml['app_installer'] ?? YamlMap();
+
     executableFileName = installerYaml['executable_file'] ?? await Directory(buildFilesFolder)
         .list()
         .firstWhere((file) =>
