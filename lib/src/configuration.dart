@@ -104,7 +104,7 @@ class Configuration {
     identityName = _args['identity-name'] ?? yaml['identity_name'];
     logoPath = _args['logo-path'] ?? yaml['logo_path'];
     osMinVersion = _args['os-min-version'] ?? yaml['os_min_version'] ?? osMinVersion;
-    executableFileName = yaml['exeFilePath'] ?? null;
+    executableFileName = yaml['exeFileName'] ?? null;
 
     final String? signToolOptionsConfig = (_args['signtool-options'] ?? yaml['signtool_options'])?.toString();
     if (signToolOptionsConfig != null && signToolOptionsConfig.isNotEmpty) {

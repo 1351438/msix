@@ -1,6 +1,4 @@
 # Changelog
-## 3.16.11+1
-- add exePathFile
 
 ## 3.16.10
 - Update `get_it` version [#306]
